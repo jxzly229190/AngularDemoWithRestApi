@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <title>Angular App Demo</title>
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/lodash.js"></script>
+    <script src="../Scripts/restangular.min.js"></script>
+    <script src="../Scripts/angular-ui-router.min.js"></script>
+</head>
+    <body>
+        <div>
+            <a ui-sref="channel">Channel Home</a>
+            <a ui-sref="channel.add">Add</a>
+            <a ui-sref="channel.edit">Edit</a>
+            <a ui-sref="channel.list">List</a>
+        </div>
+        <div ng-controller="mainCtrl">{{msg}}</div>
+        <hr/>
+        <div ui-view></div>
+    </body>
+    <script src="js/app.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/controller.js"></script>
+</html>
