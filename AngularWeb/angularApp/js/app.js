@@ -16,7 +16,19 @@ app.config(function($stateProvider) {
         url: "/lists",
         templateUrl: "views/channel/list.html",
         controller: 'channelCtrl'
+    }).state('error', {
+        url:'/error',
+        templateUrl: "views/share/error.html",
+        controller: 'channelCtrl'
     });
-}).controller("mainCtrl", function($scope) {
+})
+    //config rest angular in gloabe
+    .run(function ($location, Restangular) {
+        Restangular.setErrorInterceptor(function (resp) {
+            $location.path('error');
+            return false; // 停止promise链
+        });
+    })
+    .controller("mainCtrl", function ($scope) {
     $scope.msg = "Angular Demo";
 });

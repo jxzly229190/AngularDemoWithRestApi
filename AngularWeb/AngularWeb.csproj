@@ -161,6 +161,7 @@
     <Content Include="angularApp\js\controller.js" />
     <Content Include="angularApp\js\service.js" />
     <Content Include="angularApp\views\channel\list.html" />
+    <Content Include="angularApp\views\share\error.html" />
     <Content Include="angularApp\views\channel\edit.html" />
     <Content Include="angularApp\views\channel\add.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
