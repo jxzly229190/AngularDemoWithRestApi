@@ -2,27 +2,27 @@
 var app = angular.module('app', ['ui.router', 'restangular', 'app.services', 'app.controllers']);
 
 app.config(function ($stateProvider) {
-    $stateProvider.state('channel', {
-        url: "channel",
+    $stateProvider.state('project', {
+        url: "project",
         abtract: true,
-        template: "<div ui-view><h2>Channel Home</h2></div>"
-    }).state('channel.add', {
+        template: "<div ui-view><h2>project Home</h2></div>"
+    }).state('project.add', {
         url: "/add",
-        templateUrl: "views/channel/add.html"
-    }).state('channel.edit', {
+        templateUrl: "views/voteproject/add.html"
+    }).state('project.edit', {
         url: "/edit",
-        templateUrl: "views/channel/edit.html"
-    }).state('channel.list', {
-        url: "/lists",
-        templateUrl: "views/channel/list.html",
-        controller: 'channelCtrl'
+        templateUrl: "views/voteproject/edit.html"
+    }).state('project.votes', {
+        url: "/votes/:pid",
+        templateUrl: "views/voteproject/votes.html",
+        controller: 'projectCtrl'
     }).state('error', {
         url: '/error',
         templateUrl: "views/share/error.html"
     });
 })
     .config(function (RestangularProvider) {
-    RestangularProvider.setBaseUrl('/api');
+        RestangularProvider.setBaseUrl('/api');
     })
     //config rest angular in gloabe
     .run(function ($rootScope, $location, Restangular) {
@@ -77,7 +77,7 @@ app.config(function ($stateProvider) {
             event.preventDefault();
         });
     })
-    .controller("mainCtrl", function ($scope, projectService) {
+    .controller("mainCtrl", function ($scope, projectService, voteItemService) {
         $scope.msg = "Angular Demo";
         $scope.projects = projectService.getList(1);
     });

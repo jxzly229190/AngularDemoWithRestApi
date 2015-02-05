@@ -23,4 +23,22 @@
                 return projects.one(id).put(project);
             }
         }
-    });
+    })
+    .service("voteItemService", function (Restangular) {
+        var voteItems = Restangular.all('voteitems');
+        return {
+            getList: function (pid) {
+                return voteItems.getList({ "pid": pid }).$object;
+            },
+            one: function (id) {
+                return voteItems.one(id).$object;
+            },
+            post: function (project) {
+                return voteItems.post(project);
+            },
+            put: function (id, project) {
+                return voteItems.one(id).put(project);
+            }
+        }
+    })
+;

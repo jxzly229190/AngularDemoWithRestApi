@@ -17,9 +17,9 @@ namespace AngularWeb.Controllers
         private TeamManage_VoteEntities db = new TeamManage_VoteEntities();
 
         // GET: api/VoteItems
-        public IQueryable<VoteItem> GetVoteItems()
+        public IQueryable<VoteItem> GetVoteItems(int pid)
         {
-            return db.VoteItems;
+            return db.VoteItems.Where(vi => vi.PId == pid && vi.State == 0);
         }
 
         // GET: api/VoteItems/5

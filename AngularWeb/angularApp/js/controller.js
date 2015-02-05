@@ -2,6 +2,12 @@
     debugger;
     $scope.channels = channelService.getList();
 }).
-controller('projectCtrl', function ($scope, projectService) {
-    $scope.projects = projectService.getList();
+controller('projectCtrl', function ($scope, $stateParams, projectService, voteItemService) {
+    $scope.project = projectService.one($stateParams.pid);
+
+    $scope.votes = voteItemService.getList($stateParams.pid);
+
+    $scope.addVoteItem= function(voteItem) {
+        ;
+    }
 });

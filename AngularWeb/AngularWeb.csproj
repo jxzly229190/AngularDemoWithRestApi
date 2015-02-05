@@ -199,6 +199,9 @@
     <Content Include="angularApp\views\share\error.html" />
     <Content Include="angularApp\views\channel\edit.html" />
     <Content Include="angularApp\views\channel\add.html" />
+    <Content Include="angularApp\views\voteproject\add.html" />
+    <Content Include="angularApp\views\voteproject\edit.html" />
+    <Content Include="angularApp\views\voteproject\votes.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
