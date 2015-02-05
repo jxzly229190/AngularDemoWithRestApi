@@ -7,19 +7,77 @@
     <script src="../Scripts/lodash.js"></script>
     <script src="../Scripts/restangular.min.js"></script>
     <script src="../Scripts/angular-ui-router.min.js"></script>
+    <link href="../../Content//bootstrap.min.css" rel="stylesheet" />
+    <script src="../Scripts/bootstrap.min.js"></script>
 </head>
     <body>
         <div>
-            <a ui-sref="channel">Channel Home</a>
-            <a ui-sref="channel.add">Add</a>
-            <a ui-sref="channel.edit">Edit</a>
-            <a ui-sref="channel.list">List</a>
+            <h3>Voting Application  </h3>
+            <hr />
+
+            <!-------------------Begin Left--------------------------------------------------------------->
+            <div class="left">
+                <h1>Lefe content</h1>
+                <div ui-view></div>
+            </div>
+            <!-------------------End Left--------------------------------------------------------------->
+            <!-------------------Begin Right--------------------------------------------------------------->
+            <div class="right" ng-controller="mainCtrl">
+                <div class="list-group">
+                    <a class="list-group-item active">Vote Processing Project</a>
+                    <a class="list-group-item" ui-sref="pro.list" ng-repeat="pro in projects">{{pro.Name}}</a>
+                    
+                    <!--<a href="###" class="list-group-item" ng-repeat="project in projects" ng-click="loadProjectItems(project);">{{project.Name}}
+                    <span style="text-align: right; color: #05a903; float: right; font-size: 12px;">[投票截至: {{project.EndTime|date:"yyyy/MM/dd"}}]</span>
+                </a>-->
+
+                </div>
+            </div>
+            <!-------------------End Right--------------------------------------------------------------->
+
         </div>
-        <div ng-controller="mainCtrl">{{msg}}</div>
-        <hr/>
-        <div ui-view></div>
     </body>
     <script src="js/app.js"></script>
     <script src="js/service.js"></script>
     <script src="js/controller.js"></script>
+
+<style>
+    .content {
+        width: 100%;
+    }
+
+    .left {
+        width: 68%;
+        float: left;
+    }
+
+    .right {
+        width: 30%;
+        float: right;
+    }
+
+    .panel-heading {
+        cursor: pointer;
+    }
+
+    .panel-body {
+        padding: 15px;
+        height: 50px;
+        width: 200px;
+        overflow: auto;
+        overflow-y: auto;
+    }
+
+    .navigate {
+        text-align: right;
+    }
+
+    .hid {
+        display: none;
+    }
+
+    .yellow {
+        background-color: yellow;
+    }
+</style>
 </html>
