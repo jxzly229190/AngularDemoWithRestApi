@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using AngularWeb;
 
 namespace AngularWeb.Controllers
 {
@@ -17,11 +12,11 @@ namespace AngularWeb.Controllers
         private TeamManage_VoteEntities db = new TeamManage_VoteEntities();
 
         // GET: api/VoteProjects
-        public IQueryable<VoteProject> GetVoteProjects()
+        public IQueryable<VoteProject> GetVoteProjects(int ps=10,int pi=1)
         {
-            return db.VoteProjects;
+            return db.VoteProjects.OrderBy(p=>p.State).ThenByDescending(p=>p.Id).Skip(ps*(pi-1)).Take(ps);
         }
-
+        
         // GET: api/VoteProjects/5
         [ResponseType(typeof(VoteProject))]
         public IHttpActionResult GetVoteProject(int id)

@@ -10,8 +10,8 @@
     .service("projectService", function (Restangular) {
         var projects = Restangular.all('voteprojects');
         return {
-            getList: function () {
-                return projects.getList().$object;
+            getList: function (pi) {
+                return projects.getList({"ps":3,"pi":pi}).$object;
             },
             one: function (id) {
                 return projects.one(id).$object;

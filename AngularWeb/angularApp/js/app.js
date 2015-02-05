@@ -79,5 +79,5 @@ app.config(function ($stateProvider) {
     })
     .controller("mainCtrl", function ($scope, projectService) {
         $scope.msg = "Angular Demo";
-        $scope.projects = projectService.getList();
+        $scope.projects = projectService.getList(1);
     });
