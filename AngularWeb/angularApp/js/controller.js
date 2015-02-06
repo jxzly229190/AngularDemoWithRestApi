@@ -2,12 +2,13 @@
     debugger;
     $scope.channels = channelService.getList();
 }).
-controller('projectCtrl', function ($scope, $stateParams, projectService, voteItemService) {
-    $scope.project = projectService.one($stateParams.pid);
+controller('votesCtrl', function ($scope, $stateParams, projectService, voteItemService) {
+    $scope.projectName = $stateParams.pn;
 
     $scope.votes = voteItemService.getList($stateParams.pid);
+    $scope.project = projectService.one($stateParams.pid);
 
-    $scope.addVoteItem= function(voteItem) {
-        ;
+    $scope.toggleSelect = function (voteItem) {
+        voteItem.IsSelected = !voteItem.IsSelected;
     }
 });

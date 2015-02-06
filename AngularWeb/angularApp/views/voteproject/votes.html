@@ -1,3 +1,13 @@
-﻿<h1> Channel List Page</h1>
-
-<h3 ng-repeat="vote in votes">{{vote.Name}}</h3>
+﻿<div class="content" ng-repeat="item in votes">
+    <div ng-class="{false:'panel panel-default',true:'panel panel-info'}[item.IsSelected]">
+        <div class="panel-heading" ng-click="toggleSelect(item)">
+            <img style="width: 20px; height: 20px; float: left; margin-right: 5px;" ng-src="{{item.IsSelected?'/imgs/cb_checked.jpg':'/imgs/cb_empty.jpg'}}" />
+            <span style="float: left;">{{item.Name}}</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;[Members: <span>{{item.Members}}</span>]
+            <div style="float: right;"><a style="margin-left: 10px;" data-toggle="modal" data-target="#myModal" ng-click="updateItem(item,$event)">Edit</a><a style="margin-left: 10px;" ng-click="delItem(item,$event)">Del</a><a style="margin-left: 10px;" class="detail" ng-click="showDetail(item,$event)">Detail</a> </div>
+        </div>
+        <div class="list-group-item" ng-show="item.showDetail">
+            <div>{{item.Comment}}</div>
+        </div>
+    </div>
+</div>

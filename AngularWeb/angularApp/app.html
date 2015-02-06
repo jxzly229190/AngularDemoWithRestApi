@@ -11,73 +11,77 @@
     <script src="../Scripts/bootstrap.min.js"></script>
 </head>
     <body>
-        <div>
-            <h3>Voting Application  </h3>
-            <hr />
+            <div ng-controller="mainCtrl" class="container body-content">
+                <h3>{{activeProject?activeProject.Name:"Project Title"}}  </h3>
+                <hr />
 
-            <!-------------------Begin Left--------------------------------------------------------------->
-            <div class="left">
-                <h1>Lefe content</h1>
-                <div ui-view></div>
-            </div>
-            <!-------------------End Left--------------------------------------------------------------->
-            <!-------------------Begin Right--------------------------------------------------------------->
-            <div class="right" ng-controller="mainCtrl">
-                <div class="list-group">
-                    <a class="list-group-item active">Vote Processing Project</a>
-                    <a class="list-group-item" ui-sref="project.votes({pid:pro.Id})" ng-repeat="pro in projects">{{pro.Name}}</a>
-                    
-                    <!--<a href="###" class="list-group-item" ng-repeat="project in projects" ng-click="loadProjectItems(project);">{{project.Name}}
-                    <span style="text-align: right; color: #05a903; float: right; font-size: 12px;">[投票截至: {{project.EndTime|date:"yyyy/MM/dd"}}]</span>
-                </a>-->
-
+                <!-------------------Begin Left--------------------------------------------------------------->
+                <div class="left">
+                    <div ui-view></div>
                 </div>
-            </div>
-            <!-------------------End Right--------------------------------------------------------------->
+                <!-------------------End Left--------------------------------------------------------------->
+                <!-------------------Begin Right--------------------------------------------------------------->
+                <div class="right">
+                    <div class="list-group">
+                        <a class="list-group-item active">
+                            Vote Processing Project
+                            <span class="btn btn-sm" ui-sref="project.add" aria-label="Right Align" style="float:right; cursor:pointer">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                New
+                            </span>
+                        </a>
+                        <a class="list-group-item" ng-click="setActiveProject(pro)" ui-sref="project.votes({pid:pro.Id,pn:pro.Name})" ng-repeat="pro in projects">
+                            {{pro.Name}}
+                            <span style="text-align: right; color: #05a903; float: right; font-size: 12px;">[投票截至: {{pro.EndTime|date:"yy/MM/dd hh:mm"}}]</span>
+                        </a>
 
-        </div>
-    </body>
+                    </div>
+                </div>
+                <!-------------------End Right--------------------------------------------------------------->
+
+            </div>
+</body>
     <script src="js/app.js"></script>
     <script src="js/service.js"></script>
     <script src="js/controller.js"></script>
 
-<style>
-    .content {
-        width: 100%;
-    }
+    <style>
+        .content {
+            width: 100%;
+        }
 
-    .left {
-        width: 68%;
-        float: left;
-    }
+        .left {
+            width: 68%;
+            float: left;
+        }
 
-    .right {
-        width: 30%;
-        float: right;
-    }
+        .right {
+            width: 30%;
+            float: right;
+        }
 
-    .panel-heading {
-        cursor: pointer;
-    }
+        .panel-heading {
+            cursor: pointer;
+        }
 
-    .panel-body {
-        padding: 15px;
-        height: 50px;
-        width: 200px;
-        overflow: auto;
-        overflow-y: auto;
-    }
+        .panel-body {
+            padding: 15px;
+            height: 50px;
+            width: 200px;
+            overflow: auto;
+            overflow-y: auto;
+        }
 
-    .navigate {
-        text-align: right;
-    }
+        .navigate {
+            text-align: right;
+        }
 
-    .hid {
-        display: none;
-    }
+        .hid {
+            display: none;
+        }
 
-    .yellow {
-        background-color: yellow;
-    }
-</style>
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
 </html>

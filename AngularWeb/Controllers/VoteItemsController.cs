@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using AngularWeb;
+using TeamManager.Models;
 
 namespace AngularWeb.Controllers
 {
@@ -17,9 +18,25 @@ namespace AngularWeb.Controllers
         private TeamManage_VoteEntities db = new TeamManage_VoteEntities();
 
         // GET: api/VoteItems
-        public IQueryable<VoteItem> GetVoteItems(int pid)
+        public IList<VoteItemModel> GetVoteItems(int pid)
         {
-            return db.VoteItems.Where(vi => vi.PId == pid && vi.State == 0);
+            //Get the VoteItems
+            var voteItems = db.VoteItems.Where(vi => vi.PId == pid && vi.State == 0).ToList();
+            var userId = User.Identity.Name.Split(',')[0];
+            var voteDetails = db.VoteDetails.Where(d => d.State == 0 && d.PId == pid);
+
+            var itemModels = new List<VoteItemModel>();
+            foreach (var i in voteItems)
+            {
+                var itemModel = ModelHelper.TransferToVoteItemModel(i);
+
+                itemModel.IsSelected = voteDetails.FirstOrDefault(d => d.IId == i.Id && d.Voter == userId) != null;
+                itemModel.PreSelected = itemModel.IsSelected;
+                itemModel.Count = voteDetails.Count(d => d.IId == i.Id);
+
+                itemModels.Add(itemModel);
+            }
+            return itemModels;
         }
 
         // GET: api/VoteItems/5

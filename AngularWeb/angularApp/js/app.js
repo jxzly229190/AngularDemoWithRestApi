@@ -3,9 +3,9 @@ var app = angular.module('app', ['ui.router', 'restangular', 'app.services', 'ap
 
 app.config(function ($stateProvider) {
     $stateProvider.state('project', {
-        url: "project",
+        url: "project/:pn",
         abtract: true,
-        template: "<div ui-view><h2>project Home</h2></div>"
+        template: "<div ui-view></div>"
     }).state('project.add', {
         url: "/add",
         templateUrl: "views/voteproject/add.html"
@@ -13,9 +13,9 @@ app.config(function ($stateProvider) {
         url: "/edit",
         templateUrl: "views/voteproject/edit.html"
     }).state('project.votes', {
-        url: "/votes/:pid",
+        url: "/votes/:pid/:pn",
         templateUrl: "views/voteproject/votes.html",
-        controller: 'projectCtrl'
+        controller: 'votesCtrl'
     }).state('error', {
         url: '/error',
         templateUrl: "views/share/error.html"
@@ -80,4 +80,7 @@ app.config(function ($stateProvider) {
     .controller("mainCtrl", function ($scope, projectService, voteItemService) {
         $scope.msg = "Angular Demo";
         $scope.projects = projectService.getList(1);
+        $scope.setActiveProject = function (project) {
+            $scope.activeProject = project;
+        }
     });
