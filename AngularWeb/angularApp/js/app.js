@@ -8,7 +8,8 @@ app.config(function ($stateProvider) {
         template: "<div ui-view></div>"
     }).state('project.add', {
         url: "/add",
-        templateUrl: "views/voteproject/add.html"
+        templateUrl: "views/voteproject/add.html",
+        controller:'projectAddCtrl'
     }).state('project.edit', {
         url: "/edit",
         templateUrl: "views/voteproject/edit.html"

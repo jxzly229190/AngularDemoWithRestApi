@@ -31,4 +31,12 @@ controller('votesCtrl', function ($scope, $stateParams, projectService, voteItem
         item.showDetail = !item.showDetail;
         $event.stopPropagation();
     };
+})
+.controller('projectAddCtrl', function($scope,projectService) {
+    $scope.newProject = {};
+
+    $scope.save= function() {
+        projectService.post($scope.newProject);
+        alert('Saved successful.');
+    }
 });

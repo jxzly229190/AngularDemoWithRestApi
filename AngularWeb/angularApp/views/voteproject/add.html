@@ -1,1 +1,38 @@
-﻿<h1> Channel Add Page</h1>
+﻿<h1> New Vote Project</h1>
+
+<form class="form-horizontal">
+    <fieldset>
+        <legend>Legend</legend>
+        <div class="form-group">
+            <label for="name" class="col-lg-2 control-label">Title:</label>
+            <div class="col-lg-10">
+                <input type="text" required class="form-control" name="name" ng-model="newProject.Name" id="name" placeholder="Project Title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="voteNum" class="col-lg-2 control-label">Vote Number:</label>
+            <div class="col-lg-10">
+                <input type="text" required type="number" class="form-control" name="voteNumber" ng-model="newProject.VoteNum" id="voteNum" placeholder="1">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="btime" class="col-lg-2 control-label">Begin Time:</label>
+            <div class="col-lg-10">
+                <input type="text" required class="form-control" ng-model="newProject.BeginTime" id="btime" placeholder="Begin Time">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="etime" class="col-lg-2 control-label">End Time:</label>
+            <div class="col-lg-10">
+                <input type="text" required class="form-control" id="etime" ng-model="newProject.EndTime" placeholder="End Time">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary" ng-click="save()">Submit</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
