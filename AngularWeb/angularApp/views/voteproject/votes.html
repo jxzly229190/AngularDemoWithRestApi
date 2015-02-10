@@ -1,4 +1,6 @@
-﻿<div class="content" ng-repeat="item in votes">
+﻿<h3>{{projectName}} </h3>
+
+<div class="content" ng-repeat="item in votes">
     <div ng-class="{false:'panel panel-default',true:'panel panel-info'}[item.IsSelected]">
         <div class="panel-heading" ng-click="toggleSelect(item)">
             <img style="width: 20px; height: 20px; float: left; margin-right: 5px;" ng-src="{{item.IsSelected?'/imgs/cb_checked.jpg':'/imgs/cb_empty.jpg'}}" />

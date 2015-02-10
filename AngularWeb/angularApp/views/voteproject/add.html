@@ -2,7 +2,6 @@
 
 <form class="form-horizontal">
     <fieldset>
-        <legend>Legend</legend>
         <div class="form-group">
             <label for="name" class="col-lg-2 control-label">Title:</label>
             <div class="col-lg-10">
@@ -18,16 +17,25 @@
         <div class="form-group">
             <label for="btime" class="col-lg-2 control-label">Begin Time:</label>
             <div class="col-lg-10">
-                <input type="text" required class="form-control" ng-model="newProject.BeginTime" id="btime" placeholder="Begin Time">
+                <div class="input-group date form_datetime col-md-5" required 
+                     data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p">
+                    <input class="form-control" ng-model="newProject.BeginTime" id="btime" size="16" type="text" readonly="" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label for="etime" class="col-lg-2 control-label">End Time:</label>
             <div class="col-lg-10">
-                <input type="text" required class="form-control" id="etime" ng-model="newProject.EndTime" placeholder="End Time">
+                <div class="input-group date form_datetime col-md-5" required
+                     ng-model="newProject.EndTime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p">
+                    <input class="form-control" ng-model="newProject.EndTime" id="etime" size="16" type="text" readonly="" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
             </div>
         </div>
-        
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
                 <button type="reset" class="btn btn-default">Cancel</button>
@@ -36,3 +44,12 @@
         </div>
     </fieldset>
 </form>
+
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+        format: 'yyyy-mm-dd hh:ii',
+        showMeridian: true,
+        autoclose: true,
+        todayBtn: true });
+   
+</script>   
