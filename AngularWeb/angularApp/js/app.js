@@ -2,19 +2,15 @@
 var app = angular.module('app', ['ui.router', 'restangular', 'app.services', 'app.controllers']);
 
 app.config(function ($stateProvider) {
-    $stateProvider.state('project', {
-        url: "project/:pn",
-        abtract: true,
-        template: "<div ui-view></div>"
-    }).state('project.add', {
-        url: "/add",
+    $stateProvider.state('project_add', {
+        url: "pro/add",
         templateUrl: "views/voteproject/add.html",
         controller:'projectAddCtrl'
-    }).state('project.edit', {
-        url: "/edit",
+    }).state('project_edit', {
+        url: "pro/edit",
         templateUrl: "views/voteproject/edit.html"
-    }).state('project.votes', {
-        url: "/votes/:pid/:pn",
+    }).state('project_votes', {
+        url: "pro/votes/:pid/:pn",
         templateUrl: "views/voteproject/votes.html",
         controller: 'votesCtrl'
     }).state('error', {

@@ -28,12 +28,12 @@
                     <div class="list-group">
                         <a class="list-group-item active">
                             Vote Processing Project
-                            <span class="btn btn-sm" ui-sref="project.add" aria-label="Right Align" style="float:right; cursor:pointer">
+                            <span class="btn btn-sm" ui-sref="project_add" aria-label="Right Align" style="float:right; cursor:pointer">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 New
                             </span>
                         </a>
-                        <a class="list-group-item" ng-click="setActiveProject(pro)" ui-sref="project.votes({pid:pro.Id,pn:pro.Name})" ng-repeat="pro in projects">
+                        <a class="list-group-item" ng-click="setActiveProject(pro)" ui-sref="project_votes({pid:pro.Id,pn:pro.Name})" ng-repeat="pro in projects">
                             {{pro.Name}}
                             <span style="text-align: right; color: #05a903; float: right; font-size: 12px;">[投票截至: {{pro.EndTime|date:"yy/MM/dd hh:mm"}}]</span>
                         </a>
